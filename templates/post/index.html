@@ -1,0 +1,113 @@
+{% extends 'basee.html' %}
+
+{% block body %}
+
+{# /post/{{ post.id }} #}
+
+{#{% url 'detail' id=post.id %}#}
+
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        {% for post in posts %}
+            {% if not post.kacasatıldı and not post.contente and not post.contenth%}{# bunu ben yaptım index ve index satış ayırmak için#}
+            {% if post.confirm %}
+                {% if not request.user.is_authenticated %}      {# hem kullanıcı girmemiş hemde onay verilmişse postu gösterir.#}
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="thumbnail">
+        {#                <img src="..." alt="...">#}
+                        <div class="caption">
+                            {% if post.image %}
+                             {#  <img src="{{ post.image.url }}" class="img-responsive">#}
+                            {% endif %}
+                            {% if post.titleiki %}
+                            {# href="{{ post.get_absolute_url }}" yi kaldırdım çünkü incele butonuyla aynı işi yapıyordu tıklayınca #}
+                            <h3><a{# href="{{ post.get_absolute_url }}"#}>{{ post.titleiki }}</a> <small>{{ post.publishing_date|timesince }} önce </small></h3>
+                            {#  <h4>Yazar: {{ post.user.get_full_name }} </h4>#}
+                            {#  <p>{{ post.content|linebreaks|truncatechars:150 }}</p>  BURDA İSTERSEK CREAT YANİ AÇIKLAMAYIDA GÖSTEREBİLİRİZ#}
+                            {#   <p> {{ post.content|safe|linebreaks|truncatechars:150 }}</p> #}
+                            {% endif %}
+                            <p>    <a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">İncele</a>
+                                {% if request.user.is_authenticated %}
+                                    <a href="{{ post.get_update_url }}" class="btn btn-default" role="button">Güncelle</a>
+                                    <a href="{{ post.get_delete_url }}" class="btn btn-danger" role="button">Sil</a>
+                                    <a href="{{ post.get_update_url }}" class="btn btn-success" role="button">Cihaz Satış</a> {# buraya dikkat bağla url #}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {% endif %}
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if posts.has_previous %}
+                            <a href="?Sayfa={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                        </span>
+
+                        {% if posts.has_next %}
+                            <a href="?Sayfa={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>                                                {# burdan altı üstün aynısı sadece tek fark #}
+                                                                 {# hem kullanıcı girmemiş hemde onay verilmişse postu gösterir.#}
+                                                                    {# in terslemesi  yapıldı #}
+                {% for post in posts %}
+            {% if not post.kacasatıldı and not post.contenth and not post.contents and not post.contente %}{# bunu ben yaptım index ve index satış ayırmak için#}
+            {% if request.user.is_authenticated %}      {# hem kullanıcı girmemiş hemde onay verilmişse postu gösterir.#}
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="thumbnail">
+        {#                <img src="..." alt="...">#}
+                        <div class="caption">
+                            {% if post.image %}
+                             {#  <img src="{{ post.image.url }}" class="img-responsive">#}
+                            {% endif %}
+                            {% if post.titleiki %}
+                            {# href="{{ post.get_absolute_url }}" yi kaldırdım çünkü incele butonuyla aynı işi yapıyordu tıklayınca #}
+                            <h3><a{# href="{{ post.get_absolute_url }}"#}>{{ post.titleiki }}</a> <small>{{ post.publishing_date|timesince }} önce </small></h3>
+                            {#  <h4>Yazar: {{ post.user.get_full_name }} </h4>#}
+                            {#  <p>{{ post.content|linebreaks|truncatechars:150 }}</p>  BURDA İSTERSEK CREAT YANİ AÇIKLAMAYIDA GÖSTEREBİLİRİZ#}
+                            {#   <p> {{ post.content|safe|linebreaks|truncatechars:150 }}</p> #}
+                            {% endif %}
+                            <p>    <a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">İncele</a>
+                                {% if request.user.is_authenticated %}
+                                    <a href="{{ post.get_update_url }}" class="btn btn-default" role="button">Güncelle</a>
+                                    <a href="{{ post.get_delete_url }}" class="btn btn-danger" role="button">Sil</a>
+                                    <a href="{{ post.get_updateiadesat_url }}" class="btn btn-success" role="button">Cihaz Satış</a>
+                                   {# <a href="{{ post.get_updatedate_url }}" class="btn btn-warning" role="button">Diğer İş.</a>{# buraya dikkat bağla url #}
+                                    <dfn class="dropdown">
+                                    <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">Diğer İş.</a>
+                                        <dfn class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="btn dropdown" href="{{ post.get_updateiadeem_url }}">EMANET</a>
+                                            <dfn class="dropdown-divider"></dfn>
+                                            <a class="btn dropdown" href="{{ post.get_updateiadehu_url }}">HURDA</a>
+                                        </dfn>
+                                    </dfn>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+
+
+    </div>
+
+
+{% endblock %}

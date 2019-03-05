@@ -1,0 +1,94 @@
+{% extends 'basee.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1><font color="#f4a460">Form</font></h1>
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                          <li class="nav-item">
+                            <h3><a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"></a></h3>
+                          </li>
+                          <li class="nav-item">
+                            <h3><a class="nav-link" id="pills-kentent-tab" data-toggle="pill" href="#pills-kentent" role="tab" aria-controls="pills-kentent" aria-selected="false"></a></h3>
+                          </li>
+                          <li class="nav-item">
+                            <h3><a class="nav-link" id="pills-dontent-tab" data-toggle="pill" href="#pills-dontent" role="tab" aria-controls="pills-dontent" aria-selected="false"></a></h3>
+                          </li>
+                          <li class="nav-item">
+                            <h3><a class="nav-link" id="pills-altent-tab" data-toggle="pill" href="#pills-altent" role="tab" aria-controls="pills-altent" aria-selected="false"></a></h3>
+                          </li>
+                          <li class="nav-item">
+                            <h3><a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"></a></h3>
+                          </li>
+                          <li class="nav-item">
+                            <h3><a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"></a></h3>
+                          </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="pills-kentent" role="tabpanel" aria-labelledby="pills-kentent-tab">
+
+                            {{ form|crispy }}
+                            {{ form.media }}
+                        </div>
+                        <div class="tab-pane fade" id="pills-dontent" role="tabpanel" aria-labelledby="pills-dontent-tab">
+
+                            <h4>Alım yapılan kişinin Adı-Soyadı </h4>
+                                {{ form.alımad }}
+                            <h4>Alım yapılan kişinin TC Kimlik No </h4>
+                                {{ form.alımtc }}
+                            <h4>Seri No </h4>
+                                {{ form.title }}
+                            <h4>Model </h4>
+                                {{ form.titleiki }}
+                            <h4>Alınan Fiyat </h4>
+                                {{ form.titleuc }}
+                            <h4>İçerik </h4>
+                                {{ form.content }}
+                            <h4>Fotoğraf </h4>
+                                {{ form.image }}
+                            <h4>Yayımlansın mı?</h4>
+                                {{ form.confirm }}
+                            <h4>Tezgah fiyatı </h4>
+                                {{ form.tezgahfiyatı }}
+                        </div>
+                        <div class="tab-pane fade" id="pills-altent" role="tabpanel" aria-labelledby="pills-altent-tab">
+
+                            <h4> Satın alan hakkında bilgi..</h4>
+                                    {{ form.contents}}
+                            <h4> Kaça Satıldı</h4>
+                                    {{ form.kacasatıldı}}
+
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                            <h4> Emanetci hakkında bilgi..</h4>
+                                {{ form.contente}}
+                        </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+                            <h4> Hurda hakkında bilgi..</h4>
+                                {{ form.contenth}}
+                        </div>
+                    </div>
+                            <h4><font color="white"> Satın alan hakkında bilgi..</font></h4>
+                                    {{ form.contents}}
+                            <h4><font color="white"> Kaça Satıldı</font></h4>
+                                    {{ form.kacasatıldı}}
+                            <h4></h4>
+                  <input class="btn btn-primary" type="submit" value="Gönder">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

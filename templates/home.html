@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Anasayfa - {{ block.super }} {% endblock %}
+
+{% block body %}
+{% load static %}
+
+     {#     Hoşgeldiniz {{ request.user.get_full_name }} #}
+{# <img src="{% static "images/elma2.jpg" %}" alt="My image" height=900px width=1263px >#}
+
+
+     {#    <div class="row" style="margin-bottom: 30px;">#}
+     {#        <div class="col-md-3 col-sm-6" style="background-color: red; height: 100px;">1. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #0002ff; height: 100px;">2. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #00ff05; height: 100px;">3. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #fff200; height: 100px;">4. ürün</div>#}
+{##}
+{#        </div>#}
+{#            <div class="row" style="margin-bottom: 30px;">#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: red; height: 100px;">1. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #0002ff; height: 100px;">2. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #00ff05; height: 100px;">3. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #fff200; height: 100px;">4. ürün</div>#}
+{##}
+{#        </div>#}
+{#            <div class="row" style="margin-bottom: 30px;">#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: red; height: 100px;">1. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #0002ff; height: 100px;">2. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #00ff05; height: 100px;">3. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #fff200; height: 100px;">4. ürün</div>#}
+{##}
+{#        </div>#}
+{#            <div class="row" style="margin-bottom: 30px;">#}
+ {#          <div style="background-image: url(data-href-template="images/elma2.jpg")</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #0002ff; height: 100px;">2. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #00ff05; height: 100px;">3. ürün</div>#}
+{#            <div class="col-md-3 col-sm-6" style="background-color: #fff200; height: 100px;">4. ürün</div>#}
+
+  {#     </div>#}
+   {# <div class="container-fluid">#}
+   <div class="container-fluid">
+        <div class="row" style="padding-top:1px;" >
+             <img class="col-md-12 col-sm-12 col-xs-12"  src="{% static "images/veri.png" %}" alt="My image" >
+           {#    <img class="col-md-12 col-sm-12 col-xs-12"  src="{% static "images/elma2.jpg" %}" alt="My image" > elmacık.png#}
+           {#    <img class="col-md-12 col-sm-12 col-xs-12"  src="{% static "images/elma2.jpg" %}" alt="My image" > #}
+
+        </div>
+    </div>
+
+
+{#     Hoşgeldiniz, {{ request.user.get_full_name }}#}
+        {# <h1><a>Sitemiz çok yakında hizmetinize açılıcaktır!</a></h1>#}
+
+
+{% endblock %}

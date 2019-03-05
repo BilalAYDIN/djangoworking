@@ -1,0 +1,8 @@
+{% load crispy_forms_tags %}
+
+
+<form  method="POST">
+    {% csrf_token %}
+   <font color="white">{{ form|crispy }}</font>
+    <input type="submit"  class="btn btn-primary" value="Yorum Ekle">
+</form>

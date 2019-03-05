@@ -1,0 +1,103 @@
+{% extends 'basee.html' %}
+
+{% block body %}
+
+{# /post/{{ post.id }} #}
+
+{#{% url 'detail' id=post.id %}#}
+
+<div class="panel-heading"><b></b></div>
+
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading "><b><font face="Times" size="4" color="#8b0008"><center>ALLAH'IM BEREKETİMİZİ DAİM ETSİN..</center></b></div>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: 20%">
+    <span class="sr-only-focusable"><font face="Times" size="4" color="black"><b>MODEL</b></span>
+  </div>
+  <div class="progress-bar progress-bar-warning" style="width: 20%">
+    <span class="sr-only-focusable"><font face="Times" size="4" color="black"><b>İ.T.ELEMANI</b></span>
+  </div>
+  <div class="progress-bar progress-bar-info" style="width: 20%">
+    <span class="sr-only-focusable"><font face="Times" size="4" color="black"><b>A.TARİHİ</b></span>
+  </div>
+  <div class="progress-bar progress-bar-red" style="width: 20%">
+    <span class="sr-only-focusable"><font face="Times" size="4" color="black"><b>S.TARİHİ</b></span>
+  </div>
+  <div class="progress-bar progress-bar-danger" style="width: 20%"> {#  tahoma = yazı şekli#}
+    <span class="sr-only-focusable"><font face="Times" size="4" color="black"><b>KAZANÇ</b></span>
+  </div>
+</div>
+
+    <div class="container">
+        {% for post in posts %}
+            {% if post.kacasatıldı or post.contents %}             {# bunu ben yaptım index ve index satış ayırmak için#}
+            <div class="row">
+                <div class="col-md-18 col-md-offset-0">
+             {#        <div class="thumbnail">#}
+        {#                <img src="..." alt="...">#}
+                       <div class="caption">
+                            <div class="progress">
+                                <div class="progress-bar panel panel-success" style="width: 5%"><a href="{{ post.get_absolute_url }}" class="btn-block" role="button"><font face="Times" size="4" color="#ff4500"><b>İncele</a></span>
+
+                                    <span class="sr-only-focusable"><font face="tahoma" size="2" color="black" href="{{ post.get_absolute_url }}" >
+                                </div>
+                                <div class="progress-bar panel panel-success" style="width: 19%">
+                                    <span class="sr-only-focusable"><font face="tahoma" size="2" color="black"><b>{{ post.titleiki }}</b></span>
+                                </div>
+                                <div class="progress-bar panel panel-warning" style="width: 19%">
+                                    <span class="sr-only-focusable"><font face="tahoma" size="2" color="black"><b>{{ post.esnaf }}</b></span>
+                                </div>
+                                <div class="progress-bar panel panel-info" style="width: 19%">
+                                    <span class="sr-only-focusable"><font face="tahoma" size="2" color="black"><b>{{ post.publishing_date }}</b></span>
+                                </div>
+                                <div class="progress-bar panel panel-default" style="width: 19%">
+                                    <span class="sr-only-focusable"><font face="tahoma" size="2" color="black"><b>{{ post.satış_date }}</b></span>
+                                </div>
+                                <div class="progress-bar panel panel-danger" style="width: 19%">
+                                    <span class="sr-only-focusable"><font face="tahoma" size="2" color="black"><b>{{ post.kazanc }}  ₺</b></span>
+                                </div>
+                            </div>
+                            {# href="{{ post.get_absolute_url }}" yi kaldırdım çünkü incele butonuyla aynı işi yapıyordu tıklayınca #}
+                           {#  <h3><a{# href="{{ post.get_absolute_url }}"#}{# >{{ post.titleiki }}</a> <small>{{ post.publishing_date }}</small> </h3> <h4>Yazar: {{ post.esnaf }} |  KAZANÇ: {{ post.kazanc }} </h4> #}
+{#  table-hover                                                                                           thumbnail #}
+                            {#  <p>{{ post.content|linebreaks|truncatechars:150 }}</p>  BURDA İSTERSEK CREAT YANİ AÇIKLAMAYIDA GÖSTEREBİLİRİZ#}
+                           {#   <p> {{ post.content|safe|linebreaks|truncatechars:150 }}</p>     SONDURAK #}
+                           {# <p> #}
+                                {#  <a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">İncele</a>  #}
+                                {# <a href="{{ post.get_updateiadesat_url}}" class="btn btn-default" role="button">Güncelle</a> #}
+                               {# <a href="{{ post.get_delete_url }}" class="btn btn-danger" role="button">Sil</a> #}
+                               {# <a href="{{ post.get_deletex_url }}" class="btn btn-warning" role="button">SATIŞ İADE</a> #}
+                                {#  <a href="{{ post.get_update_url }}" class="btn btn-success" role="button">Cihaz Satış</a> {# buraya dikkat bağla url #}
+                       {#      </p>#}
+                        </div>           {#------------------------- knk buraya dikkat {{ post.topkaz }} ------------------------#}
+                  {#  </div>#}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if posts.has_previous %}
+                            <a href="?Sayfa={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                        </span>
+
+                        {% if posts.has_next %}
+                            <a href="?Sayfa={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
